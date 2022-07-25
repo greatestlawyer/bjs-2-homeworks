@@ -9,22 +9,19 @@ function solveEquation(a, b, c) {
   console.log(discriminant);
   
   if (discriminant === 0) {
-    root1 = root2 = -b / (2 * a);
+    arr.push(-b / (2 * a));
     //console.log(`${root1} и ${root2}`);
-    console.log(arr.push(`${root1} и ${root2}`));
+    //console.log(arr.push(`${root1} и ${root2}`));
 } else if (discriminant > 0) {
-    root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
-    root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+    arr.push((-b + Math.sqrt(discriminant)) / (2 * a));
+    arr.push((-b - Math.sqrt(discriminant)) / (2 * a));
     //console.log(`${root1} и ${root2}`);
-    console.log(arr.push(`${root1} и ${root2}`));
+    //console.log(arr.push(`${root1} и ${root2}`));
 }
   return arr; 
 }
 
 //function calculateTotalMortgage(percent, contribution, amount, date) {
-  //let totalAmount;
-
-  
-
-  //return totalAmount;
+ // let totalAmount;
+ // return totalAmount;
 //}
