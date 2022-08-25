@@ -16,7 +16,7 @@ class PrintEditionItem{
   }
   
   fix(){
-    return this.state * 1.5;
+     this.state = this.state * 1.5;
   }
 
   set state(number) {
@@ -58,8 +58,7 @@ class Book extends PrintEditionItem{
     state,
     type
     ) {
-  super(
-    author, 
+  super( 
     name,
     releaseDate,
     pagesCount,
