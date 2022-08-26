@@ -30,21 +30,18 @@ class Triangle{
       }  
   }
   getPerimeter() {
-    let perimeter = this.sideOne + this.sideTwo + this.sideThree;
-    return perimeter;
+    return this.sideOne + this.sideTwo + this.sideThree;
   }
   getArea() {
     let halfPerimeter = 1/2 * (this.sideOne + this.sideTwo + this.sideThree);
-    let square = Math.sqrt(halfPerimeter * (halfPerimeter - this.sideOne)*(halfPerimeter - this.sideTwo)*(halfPerimeter - this.sideThree)).toFixed(3);
-    return square;
+    return Number(Math.sqrt(halfPerimeter * (halfPerimeter - this.sideOne)*(halfPerimeter - this.sideTwo)*(halfPerimeter - this.sideThree)).toFixed(3));
   }
 }
 
 
 function getTriangle(sideOne, sideTwo, sideThree) {
   try{
-    let triangle = new Triangle(sideOne, sideTwo, sideThree);
-    return triangle;
+    return new Triangle(sideOne, sideTwo, sideThree);
   } catch(error) {
       return {
         getPerimeter() {
