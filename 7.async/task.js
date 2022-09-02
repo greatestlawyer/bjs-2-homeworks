@@ -14,12 +14,12 @@ class AlarmClock{
   }
   
   removeClock(id){
-    let res = this.alarmCollection.filter((item => item.id === id));
-    if (res){
-      this.alarmCollection.splice(res, 1);
-      return true;
-    } else {
+    let res = this.alarmCollection.findIndex(item => item.id === id);
+    if (res === -1) {
       return false;
+    } else {
+      this.alarmCollection.splice([res], 1);
+      return true;
     }
 }
 
@@ -28,17 +28,20 @@ class AlarmClock{
   }
   
   start() {
-    let checkClock = call => {
-      if (call.time === this.getCurrentFormattedTime()) {
-        call.callback();
-      } else if(this.timerId === undefined) {this.timerId = setInterval(() => {
-          this.alarmCollection.forEach(call => checkClock(call));
-        }, 2000);}
+    function checkClock(t) {
+      if (t.time === this.getCurrentFormattedTime()) {
+        t.callback();
+      }
+    }
+    
+    if (this.timerId === null) {
+      this.timerId = setInterval(() => 
+        this.alarmCollection.forEach(t => checkClock(t)), 2000);
     }
   }
 
   stop() {
-    if(this.timerId === true) {
+    if(this.timerId) {
       clearInterval(this.timerId);
       this.timerId = null;
     }
@@ -49,7 +52,7 @@ class AlarmClock{
   }
   
   clearAlarms(){
-    clearInterval(this.timerId);
+    this.stop();
     this.alarmCollection = [];
   }
 }
