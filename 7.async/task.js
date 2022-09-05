@@ -18,7 +18,7 @@ class AlarmClock{
     if (res === -1) {
       return false;
     } else {
-      this.alarmCollection.splice([res], 1);
+      this.alarmCollection.splice(res, 1);
       return true;
     }
 }
@@ -32,6 +32,7 @@ class AlarmClock{
       if (t.time === this.getCurrentFormattedTime()) {
         t.callback();
       }
+      checkClock = checkClock.bind(this);
     }
     
     if (this.timerId === null) {
