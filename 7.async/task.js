@@ -28,11 +28,10 @@ class AlarmClock{
   }
   
   start() {
-    function checkClock(t) {
+    let checkClock = t => {
       if (t.time === this.getCurrentFormattedTime()) {
         t.callback();
       }
-      checkClock = checkClock.bind(this);
     }
     
     if (this.timerId === null) {
